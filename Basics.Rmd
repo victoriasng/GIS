@@ -1,0 +1,101 @@
+---
+title: "Basics"
+output: html_document
+date: "2026-10-21"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+```{r}
+A <- 1
+B <- 2
+C <- A+B
+C
+```
+```{r}
+ls()
+```
+
+```{r}
+rm(A)
+```
+```{r}
+ls()
+```
+```{r}
+rm(list=ls())
+```
+```{r}
+#create some datasets, first a vector of 1-100 and 101-200
+# c means combine
+Data1 <- c(1:100)
+Data2 <- c(101:200)
+#Plot the data
+plot(Data1, Data2, col="red")
+```
+```{r}
+#just for fun, create some more, this time some normally distributed
+#vectors of 100 numbers
+Data3 <- rnorm(100, mean = 53, sd=34)
+Data4 <- rnorm(100, mean = 64, sd=14)
+#plot
+plot(Data3, Data4, col="blue")
+```
+```{r}
+df <- data.frame(Data1, Data2)
+plot(df, col="green")
+```
+```{r}
+library(tidyverse)
+#show the first 10 and then last 10 rows of data in df...
+df %>%
+  head()
+```
+```{r}
+df %>%
+  tail()
+```
+```{r}
+df[1:10, 1]
+df[5:15,]
+df[c(2,3,6),2]
+df[,1]
+```
+```{r}
+library(dplyr)
+df <- df %>%
+  dplyr::rename(column1 = Data1, column2=Data2)
+```
+```{r}
+df %>% 
+  dplyr::select(column1)
+```
+```{r}
+df$column1
+```
+```{r}
+df[["column1"]]
+```
+
+
