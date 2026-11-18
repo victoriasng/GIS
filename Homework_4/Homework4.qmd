@@ -15,6 +15,7 @@ library(tidyverse)
 library(sf)
 library(janitor)
 library(countrycode)
+library(tmap)
 ```
 
 ### Read in data
@@ -49,3 +50,9 @@ Join_GII <- World %>%
             by = c("iso" = "iso_code"))
 ```
 
+```{r}
+tmap_mode("plot")
+# I chose to plot the difference in index 
+Join_GII %>%
+  qtm(.,fill = "difference")
+```
